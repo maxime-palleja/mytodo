@@ -57,7 +57,7 @@ let db;
 if (process.env.CLOUDANT_USERNAME !== undefined)  {
   db = require('./lib/db-cloudant')(process.env);
 } else if (process.env.MONGO_URL !== undefined) {
-  db = require('./lib/db-mongo')(process.env);
+  db = require('./lib/db-mongo')({ MONGO_URL: process.env.MONGO_URL });
 } else {
   db = require('./lib/in-memory')();
 }
